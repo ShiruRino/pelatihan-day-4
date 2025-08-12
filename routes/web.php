@@ -20,3 +20,4 @@ Route::get('bagi', [CalculatorController::class,'viewBagi']);
 Route::post('bagi', [CalculatorController::class,'bagiAction'])->name('bagi.store');
 
 Route::get('index', [CrudController::class,'index']);
+Route::get('create', [CrudController::class,'']);
