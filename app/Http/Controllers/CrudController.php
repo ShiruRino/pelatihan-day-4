@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crud;
 use Illuminate\Http\Request;
 
 class CrudController extends Controller
@@ -19,7 +20,7 @@ class CrudController extends Controller
      */
     public function create()
     {
-        //
+        return view("crud.create");
     }
 
     /**
@@ -27,7 +28,15 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Crud::create([
+            "text_Field" => $request->text_field,
+            "radio_field" => $request->radio_field,
+            "checkbox" => $request->checkbox,
+            "select_field" => $request->select_field,
+            "date_field" => $request->date_field,
+            "textarea" => $request->textarea,
+        ]);
+        return view("crud.index");
     }
 
     /**

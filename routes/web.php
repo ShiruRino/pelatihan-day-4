@@ -19,5 +19,6 @@ Route::post('kali', [CalculatorController::class,'kaliAction'])->name('kali.stor
 Route::get('bagi', [CalculatorController::class,'viewBagi']);
 Route::post('bagi', [CalculatorController::class,'bagiAction'])->name('bagi.store');
 
-Route::get('index', [CrudController::class,'index']);
-Route::get('create', [CrudController::class,'']);
+Route::get('index', [CrudController::class,'index'])->name('crud.index');
+Route::get('create', [CrudController::class,'create']);
+Route::post('create', [CrudController::class,'store'])->name('crud.store');
