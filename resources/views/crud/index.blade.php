@@ -9,7 +9,7 @@
 <body>
     <h1>CRUD Sederhana</h1>
     {{-- @dd($cruds) --}}
-    <a href="{{url('create')}}">Create</a>
+    <a href="{{route('crud.create')}}">Create</a>
     <table border="1" cellpadding='5' cellspacing ='0'>
         <thead>
             <tr>
