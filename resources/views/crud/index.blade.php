@@ -41,7 +41,7 @@
                 <td></td>
                 @endif
                 <td>{{$crud->textarea}}</td>
-                <td></td>
+                <td><a href="{{route('crud.edit', $crud->id)}}">Edit</a></td>
             </tr>
         </tbody>
         @endforeach

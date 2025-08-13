@@ -23,5 +23,6 @@ Route::prefix('crud')->group(function () {
     Route::get('index', [CrudController::class,'index'])->name('crud.index');
     Route::get('create', [CrudController::class,'create'])->name('crud.create');
     Route::post('create', [CrudController::class,'store'])->name('crud.store');
-    Route::get('{id}', [CalculatorController::class,''])->name('crud.update');
+    Route::get('{id}', [CrudController::class,'edit'])->name('crud.edit');
+    Route::post('{id}', [CrudController::class,'update'])->name('crud.update');
 });
