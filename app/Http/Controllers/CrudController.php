@@ -67,11 +67,20 @@ class CrudController extends Controller
     */
     public function update(Request $request, string $id)
     {
+        $filepath = null;
+        if ($request->hasFile('file_field')) {
+            $filepath = $request->file('file_field')->store('upload','public');
+        }
         $crud = Crud::findOrFail($id);
         $crud->text_field = $request->text_field;
         $crud->radio_field = $request->radio_field;
         $crud->checkbox = $request->checkbox;
-        $crud->select_field = $request->checkbox;
+        $crud->select_field = $request->select_field;
+        $crud->date_field = $request->date_field;
+        if($filepath !== null) {
+            $crud->file_field = $filepath;
+        }
+        $crud->textarea = $request->textarea;
         $crud->save();
         return redirect()->route('crud.index');
     }
