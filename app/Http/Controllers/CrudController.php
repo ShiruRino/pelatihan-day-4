@@ -48,7 +48,7 @@ class CrudController extends Controller
 
     /**
      * Display the specified resource.
-     */
+    */
     public function show(string $id)
     {
         //
@@ -56,7 +56,7 @@ class CrudController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     */
+    */
     public function edit(string $id)
     {
         $crud = Crud::findOrFail($id);
@@ -65,16 +65,19 @@ class CrudController extends Controller
 
     /**
      * Update the specified resource in storage.
-     */
+    */
     public function update(Request $request, string $id)
     {
         $crud = Crud::findOrFail($id);
         $crud->text_field = $request->text_field;
+        $crud->save();
+        $cruds = Crud::orderBy("id","desc")->get();
+        return view("crud.index", compact('cruds'));
     }
 
     /**
      * Remove the specified resource from storage.
-     */
+    */
     public function destroy(string $id)
     {
         //
