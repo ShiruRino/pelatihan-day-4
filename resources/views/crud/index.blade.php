@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>CRUD Sederhana</h1>
+    {{-- @dd($cruds) --}}
     <a href="{{url('create')}}">Create</a>
     <table border="1" cellpadding='5' cellspacing ='0'>
         <thead>
@@ -23,19 +24,27 @@
                 <th>Action</th>
             </tr>
         </thead>
+        @foreach ($cruds as $crud)
         <tbody>
             <tr>
+                <td>{{$crud->id}}</td>
+                <td>{{$crud->text_field}}</td>
+                <td>{{$crud->radio_field}}</td>
+                @if (is_array($crud->checkbox))
+                <td>{{implode(',', $crud->checkbox)}}</td>
+                @endif
+                <td>{{$crud->select_field}}</td>
+                <td>{{$crud->date_field}}</td>
+                @if ($crud->file_field)
+                <td><img src="{{asset('storage/' . $crud->file_field)}}" alt="file" width="150px" height="auto"></td>
+                @else
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                @endif
+                <td>{{$crud->textarea}}</td>
                 <td></td>
             </tr>
         </tbody>
+        @endforeach
     </table>
 </body>
 </html>

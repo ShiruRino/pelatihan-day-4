@@ -12,7 +12,8 @@ class CrudController extends Controller
      */
     public function index()
     {
-        return view("crud.index");
+        $cruds = Crud::orderBy("id","desc")->get();
+        return view("crud.index", compact("cruds"));
     }
 
     /**
@@ -28,15 +29,21 @@ class CrudController extends Controller
      */
     public function store(Request $request)
     {
+        $filepath = null;
+        if ($request->hasFile("file_field")) {
+            $filepath = $request->file("file_field")->store("upload", 'public');
+        }
         Crud::create([
             "text_Field" => $request->text_field,
             "radio_field" => $request->radio_field,
             "checkbox" => $request->checkbox,
             "select_field" => $request->select_field,
             "date_field" => $request->date_field,
+            "file_field"=> $filepath,
             "textarea" => $request->textarea,
         ]);
-        return view("crud.index");
+        $cruds = Crud::orderBy("id","desc")->get();
+        return view("crud.index", compact('cruds'));
     }
 
     /**
