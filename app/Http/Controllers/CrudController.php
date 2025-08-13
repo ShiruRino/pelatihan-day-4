@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CrudController extends Controller
 {
@@ -91,7 +92,10 @@ class CrudController extends Controller
     public function destroy(string $id)
     {
         $crud = Crud::findOrFail($id);
-
+        if ($crud->file_field && Storage::disk('public')->exists($crud->file_field)) {
+            Storage::disk('public')->delete($crud->file_field);
+        }
         $crud->delete();
+        return redirect()->route('crud.index');
     }
 }

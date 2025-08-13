@@ -25,4 +25,5 @@ Route::prefix('crud')->group(function () {
     Route::post('create', [CrudController::class,'store'])->name('crud.store');
     Route::get('update/{id}', [CrudController::class,'edit'])->name('crud.edit');
     Route::put('update/{id}', [CrudController::class,'update'])->name('crud.update');
+    Route::delete('destroy/{id}', [CrudController::class,'destroy'])->name('crud.destroy');
 });

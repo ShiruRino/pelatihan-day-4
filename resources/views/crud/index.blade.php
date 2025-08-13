@@ -43,10 +43,15 @@
                 <td></td>
                 @endif
                 <td>{{$crud->textarea}}</td>
-                <td><a href="{{route('crud.edit', $crud->id)}}">Edit</a></td>
+                <td><a href="{{route('crud.edit', $crud->id)}}">Edit</a><form action="{{route('crud.destroy', $crud->id)}}" method="post">@csrf @method('DELETE')<button type="submit" onclick="return confirm('aryusur?')">Delete</button></form></td>
             </tr>
         </tbody>
         @endforeach
     </table>
+    <script>
+        function onClick(id){
+
+        }
+    </script>
 </body>
 </html>
