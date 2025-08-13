@@ -32,6 +32,8 @@
                 <td>{{$crud->radio_field}}</td>
                 @if (is_array($crud->checkbox))
                 <td>{{implode(',', $crud->checkbox)}}</td>
+                @else
+                <td></td>
                 @endif
                 <td>{{$crud->select_field}}</td>
                 <td>{{$crud->date_field}}</td>

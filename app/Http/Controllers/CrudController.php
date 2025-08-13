@@ -42,8 +42,7 @@ class CrudController extends Controller
             "file_field"=> $filepath,
             "textarea" => $request->textarea,
         ]);
-        $cruds = Crud::orderBy("id","desc")->get();
-        return view("crud.index", compact('cruds'));
+        return redirect()->route('crud.index');
     }
 
     /**
@@ -70,9 +69,11 @@ class CrudController extends Controller
     {
         $crud = Crud::findOrFail($id);
         $crud->text_field = $request->text_field;
+        $crud->radio_field = $request->radio_field;
+        $crud->checkbox = $request->checkbox;
+        $crud->select_field = $request->checkbox;
         $crud->save();
-        $cruds = Crud::orderBy("id","desc")->get();
-        return view("crud.index", compact('cruds'));
+        return redirect()->route('crud.index');
     }
 
     /**
@@ -80,6 +81,8 @@ class CrudController extends Controller
     */
     public function destroy(string $id)
     {
-        //
+        $crud = Crud::findOrFail($id);
+
+        $crud->delete();
     }
 }

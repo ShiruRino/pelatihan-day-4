@@ -22,8 +22,14 @@
     </div>
     <div>
         <label for="">Checkbox Field</label>
+        @if ($crud->checkbox)
         <input type="checkbox" name="checkbox_field[]" value="checkb_1" {{in_array('checkb_1',$crud->checkbox) ? 'checked' : ''}}> checkbox 1
         <input type="checkbox" name="checkbox_field[]" value="checkb_2" {{in_array('checkb_2',$crud->checkbox) ? 'checked' : ''}}> checkbox 2
+        @else
+        <input type="checkbox" name="checkbox_field[]" value="checkb_1"> checkbox 1
+        <input type="checkbox" name="checkbox_field[]" value="checkb_2"> checkbox 2
+
+        @endif
     </div>
     <div>
         <label for="">Select Field</label>
