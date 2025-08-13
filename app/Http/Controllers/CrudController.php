@@ -68,7 +68,8 @@ class CrudController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $crud = Crud::findOrFail($id);
+        $crud->text_field = $request->text_field;
     }
 
     /**

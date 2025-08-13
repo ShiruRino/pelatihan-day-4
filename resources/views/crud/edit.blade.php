@@ -9,6 +9,7 @@
     <h1>Edit</h1>
     <form action="{{ route('crud.update', $crud->id) }}" method="post" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
     <div>
 
         <label for="">Text Field</label>
@@ -46,7 +47,7 @@
         <label for="">Textarea</label>
         <textarea name="textarea" cols="30" rows="6">{{$crud->textarea}}</textarea>
     </div>
-        <button type="submit">Kirim</button>
+        <button type="submit">Update</button>
     </form>
 </body>
 </html>
