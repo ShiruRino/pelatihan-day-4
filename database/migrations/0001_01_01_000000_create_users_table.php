@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('id_level')->references('id')->on('levels');
+            $table->foreign('id_majore')->references('id')->on('majores');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
