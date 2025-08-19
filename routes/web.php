@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::prefix('crud')->group(function () {
     Route::put('update/{id}', [CrudController::class,'update'])->name('crud.update');
     Route::delete('destroy/{id}', [CrudController::class,'destroy'])->name('crud.destroy');
 });
+Route::get('login', [AuthController::class,'index'])->name('index');

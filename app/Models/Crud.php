@@ -18,6 +18,5 @@ class Crud extends Model
     ] ;
     protected $casts = [
         'checkbox' => 'array',
-
     ] ;
 }
