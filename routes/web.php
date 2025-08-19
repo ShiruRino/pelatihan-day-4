@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CalculatorController;
-use App\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PicController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CrudController;
+use App\Http\Controllers\CalculatorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,5 +29,7 @@ Route::prefix('crud')->group(function () {
     Route::put('update/{id}', [CrudController::class,'update'])->name('crud.update');
     Route::delete('destroy/{id}', [CrudController::class,'destroy'])->name('crud.destroy');
 });
-Route::get('login', [AuthController::class,'index'])->name('index');
-Route::post('store/login', [AuthController::class,'store'])->name('login');
+Route::get('login', [AuthController::class,'index'])->name('login');
+Route::post('store/login', [AuthController::class,'store'])->name('store.login');
+Route::get('dashboard/pic', [PicController::class, 'index'])->name('pic');
+Route::post('logout', [AuthController::class,'logout']);

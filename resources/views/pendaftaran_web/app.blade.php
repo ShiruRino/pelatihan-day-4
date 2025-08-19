@@ -9,7 +9,7 @@
     <meta name="author" content="ColorlibHQ">
     <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
     <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags--><!--begin::Fonts-->
-
+    @include('pendaftaran_web.inc.css')
 </head>
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary"> <!--begin::App Wrapper-->
@@ -93,7 +93,12 @@
                             </li> <!--end::User Image--> <!--begin::Menu Body-->
                             <li class="user-body"> <!--begin::Row-->
                             </li> <!--end::Menu Body--> <!--begin::Menu Footer-->
-                            <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a> <a href="#" class="btn btn-default btn-flat float-end">Sign out</a> </li> <!--end::Menu Footer-->
+                            <li class="user-footer"> <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <form action="{{url('logout')}}" method="post" style="display: inline;">
+                                    @csrf
+                                    <button type="submit"  class="btn btn-primary">Sign Out</button>
+                                </form>
+                            </li> <!--end::Menu Footer-->
                         </ul>
                     </li> <!--end::User Menu Dropdown-->
                 </ul> <!--end::End Navbar Links-->
@@ -362,6 +367,7 @@
             </div>
             <div class="app-content"> <!--begin::Container-->
                 <div class="container-fluid"> <!-- Info boxes -->
+                    @yield('content')
                 </div> <!--end::Container-->
             </div> <!--end::App Content-->
         </main> <!--end::App Main--> <!--begin::Footer-->
@@ -376,5 +382,5 @@
     </div> <!--end::App Wrapper--> <!--begin::Script--> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 
 </body><!--end::Body-->
-
+@include('pendaftaran_web.inc.js')
 </html>

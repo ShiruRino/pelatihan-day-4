@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class PicController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view("index");
+        return view("pendaftaran_web.pic.dashboard");
     }
 
     /**
@@ -28,25 +27,9 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $credentials = $request->validate([
-            "email"=> "required|email",
-            "password"=> "required|string",
-        ]);
-        if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-         return redirect()->route("pic")->with("status","Login berhasil");
-        }
-        return back()->withErrors([
-            "email"=> "Email atau password salah",
-        ])->onlyInput("email");
+        //
     }
 
-    public function logout(Request $request){
-        Auth::guard('web')->logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    }
     /**
      * Display the specified resource.
      */

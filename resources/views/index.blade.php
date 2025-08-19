@@ -21,7 +21,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-                <form action="{{route('login')}}" method="post">
+                <form action="{{route('store.login')}}" method="post">
                     @csrf
                     <div class="input-group mb-3"> <input type="email" class="form-control" name="email" placeholder="Email">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
