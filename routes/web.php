@@ -29,3 +29,4 @@ Route::prefix('crud')->group(function () {
     Route::delete('destroy/{id}', [CrudController::class,'destroy'])->name('crud.destroy');
 });
 Route::get('login', [AuthController::class,'index'])->name('index');
+Route::post('store/login', [AuthController::class,'store'])->name('login');
