@@ -34,7 +34,15 @@ class AuthController extends Controller
         ]);
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-         return redirect()->route("pic")->with("status","Login berhasil");
+            if(Auth::user()->id_level == 2) {
+                return redirect()->route("pic")->with("success","Login berhasil");
+            } elseif(Auth::user()->id_level == 3) {
+                return redirect()->route("instructor")->with("success","Login berhasil");
+            } elseif(Auth::user()->id_level == 4) {
+                return redirect()->route("student")->with("success","Login berhasil");
+            } else{
+                return redirect()->route("leader")->with("success","Login berhasil");
+            }
         }
         return back()->withErrors([
             "email"=> "Email atau password salah",

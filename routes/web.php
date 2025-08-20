@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\LeaderController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PicController;
 use App\Http\Controllers\AuthController;
@@ -31,5 +34,14 @@ Route::prefix('crud')->group(function () {
 });
 Route::get('login', [AuthController::class,'index'])->name('login');
 Route::post('store/login', [AuthController::class,'store'])->name('store.login');
-Route::get('dashboard/pic', [PicController::class, 'index'])->name('pic');
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard/student', [StudentController::class, 'index'])->name('student');
+    Route::get('dashboard/leader', [LeaderController::class, 'index'])->name('leader');
+    Route::middleware('PIC')->group(function () {
+        Route::get('dashboard/pic', [PicController::class, 'index'])->name('pic');
+    });
+    Route::middleware('INST')->group(function () {
+        Route::get('dashboard/instructor', [InstructorController::class, 'index'])->name('instructor');
+    });
+});
 Route::post('logout', [AuthController::class,'logout']);
