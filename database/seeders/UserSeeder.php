@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $factory = Factory::create('id_ID');
-        for( $i = 1; $i <= 5; $i++ ){
+        for( $i = 1; $i < 5; $i++ ){
             User::create([
                 'name'=> $factory->name(),
                 'id_level'=> $i,
