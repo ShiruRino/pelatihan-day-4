@@ -17,7 +17,7 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        return view("pendaftaran_web.instructor.dashboard", compact("students"));
+        return view("pendaftaran_web.instructor.dashboard");
     }
     public function indexStudents()
     {
@@ -77,7 +77,9 @@ class InstructorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $majores = Majore::all();
+        $student = Student::findOrFail($id);
+        return view('pendaftaran_web.instructor.manage_students.edit', compact(['majores','student']));
     }
 
     /**
@@ -85,7 +87,30 @@ class InstructorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $rules = [
+            'nama_lengkap' => 'required',
+            'id_majore' => 'required',
+            'nik' => 'required',
+            'kartu_keluarga' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'nama_sekolah' => 'required',
+            'kejuruan' => 'required',
+            'nomor_hp' => 'required',
+            'email' => 'required',
+            'aktivitas_saat_ini' => 'nullable',
+            'status' => 'required'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        $student->update($request->all());
+
+        return redirect()->route('student.instructor');
     }
 
     /**
@@ -93,6 +118,8 @@ class InstructorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $student = Student::findOrFail($id);
+        $student->delete();
+        return redirect()->route('student.instructor');
     }
 }

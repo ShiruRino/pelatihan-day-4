@@ -45,6 +45,9 @@ Route::middleware('auth')->group(function () {
         Route::get('manage/student/instructor', [InstructorController::class, 'indexStudents'])->name('student.instructor');
         Route::get('create/student/instructor', [InstructorController::class, 'create'])->name('create.student.instructor');
         Route::post('store/student/instructor', [InstructorController::class, 'store'])->name('store.student.instructor');
+        Route::get('edit/student/instructor/{id}', [InstructorController::class, 'edit'])->name('edit.student.instructor');
+        Route::post('update/student/instructor/{id}', [InstructorController::class, 'update'])->name('update.student.instructor');
+        Route::delete('destroy/student/instructor/{id}', [InstructorController::class, 'destroy'])->name('destroy.student.instructor');
     });
 });
 Route::post('logout', [AuthController::class,'logout']);

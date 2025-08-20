@@ -37,12 +37,12 @@
             <tr>
               <td>{{ $no++ }}</td>
               <td>
-                {{-- <a href="{{ route('edit.student.instructor', $i->id) }}" class="btn btn-success">Edit</a>
-                <form action="{{ route('destroy.student.instructor', $i->id) }}" method="post" onclick="return confirm('Yahin di delete ?')" style="display: inline">
+                <a href="{{ route('edit.student.instructor', $i->id) }}" class="btn btn-success">Edit</a>
+                <form action="{{ route('destroy.student.instructor', $i->id) }}" method="post" onclick="return confirm('Yakin di delete ?')" style="display: inline">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Delete</button>
-                </form> --}}
+                </form>
               </td>
               <td>{{ $i->nama_lengkap }}</td>
               <td>{{ $i->email }}</td>
