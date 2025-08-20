@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InstructorController extends Controller
 {
@@ -12,11 +14,11 @@ class InstructorController extends Controller
      */
     public function index()
     {
-        return view("pendaftaran_web.instructor.dashboard");
+        return view("pendaftaran_web.instructor.dashboard", compact("students"));
     }
     public function indexStudents()
     {
-        $students = User::orderBy('name')->where('id_level','4')->get();
+        $students = Student::orderBy('nama_lengkap')->get();
         return view("pendaftaran_web.instructor.manage_students.index", compact("students"));
     }
 

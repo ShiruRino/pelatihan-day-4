@@ -29,36 +29,28 @@
             </tr>
           </thead>
           <tbody class="text-center">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            {{-- @php
+            @php
               $no = 1;
             @endphp
             @foreach ($students as $i)
-            @if ($i->id_majore == Auth::user()->id_majore)
+            {{-- @if ($i->id_majore == Auth::user()->id_majore) --}}
             <tr>
               <td>{{ $no++ }}</td>
               <td>
-                <a href="{{ route('edit.student.instructor', $i->id) }}" class="btn btn-success">Edit</a>
+                {{-- <a href="{{ route('edit.student.instructor', $i->id) }}" class="btn btn-success">Edit</a>
                 <form action="{{ route('destroy.student.instructor', $i->id) }}" method="post" onclick="return confirm('Yahin di delete ?')" style="display: inline">
                   @csrf
                   @method('DELETE')
                   <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+                </form> --}}
               </td>
-              <td>{{ $i->name }}</td>
+              <td>{{ $i->nama_lengkap }}</td>
               <td>{{ $i->email }}</td>
-              <td>{{ $i->majore }}</td>
+              <td>{{ $i->kejuruan }}</td>
               <td>{{ Str::upper($i->status) }}</td>
             </tr>
-            @endif
-            @endforeach --}}
+            {{-- @endif --}}
+            @endforeach
           </tbody>
         </table>
       </div>
