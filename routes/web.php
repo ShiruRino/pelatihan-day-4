@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::middleware('INST')->group(function () {
         Route::get('dashboard/instructor', [InstructorController::class, 'index'])->name('instructor');
         Route::get('manage/student/instructor', [InstructorController::class, 'indexStudents'])->name('student.instructor');
-        Route::get('create/student/instructor', [StudentController::class, 'create'])->name('create.student.instructor');
-        Route::post('store/student/instructor', [StudentController::class, 'store'])->name('store.student.instructor');
+        Route::get('create/student/instructor', [InstructorController::class, 'create'])->name('create.student.instructor');
+        Route::post('store/student/instructor', [InstructorController::class, 'store'])->name('store.student.instructor');
     });
 });
 Route::post('logout', [AuthController::class,'logout']);

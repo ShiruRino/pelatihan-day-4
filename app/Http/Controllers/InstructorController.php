@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Majore;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class InstructorController extends Controller
 {
@@ -27,7 +30,8 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        //
+        $majores = Majore::orderBy("majores_name")->get();
+        return view("pendaftaran_web.instructor.manage_students.create", compact("majores"));
     }
 
     /**
@@ -35,7 +39,29 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'nama_lengkap' => 'required',
+            'id_majore' => 'required',
+            'nik' => 'required',
+            'kartu_keluarga' => 'required',
+            'jenis_kelamin' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'nama_sekolah' => 'required',
+            'kejuruan' => 'required',
+            'nomor_hp' => 'required',
+            'email' => 'required',
+            'aktivitas_saat_ini' => 'nullable',
+            'status' => 'required'
+        ];
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+        Student::create($request->all());
+
+        return redirect()->route('student.instructor');
     }
 
     /**
