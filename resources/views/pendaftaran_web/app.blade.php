@@ -119,7 +119,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                <li class="nav-item"> <a href="{{route('instructor.manage-students')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                                <li class="nav-item"> <a href="{{route('student.instructor')}}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
                                         <p>Manage Students</p>
                                     </a> </li>
                                 <li class="nav-item"> <a href="./widgets/info-box.html" class="nav-link"> <i class="nav-icon bi bi-circle"></i>

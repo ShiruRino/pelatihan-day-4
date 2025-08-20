@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Majore;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -19,7 +20,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $majores = Majore::orderBy("majores_name")->get();
+        return view("pendaftaran_web.instructor.manage_students.create", compact("majores"));
     }
 
     /**
